@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cow Boy - Turn Battle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Cabin:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <h1>Cow Boy</h1>
+      <p>4-player turn battle: Up, Left, Down, Right.</p>
+    </header>
+
+    <section class="layout">
+      <section class="board-wrap" aria-label="Game board">
+        <canvas id="gameCanvas" width="720" height="720" role="img" aria-label="Turn-based cowboy battle board"></canvas>
+      </section>
+
+      <aside class="panel" aria-label="Game controls">
+        <div class="card">
+          <h2>Turn</h2>
+          <p id="statusLine">Press Start Match</p>
+          <p id="roundLine">Round: 1</p>
+        </div>
+
+        <div class="card">
+          <h2>Player Commands</h2>
+          <p class="help">
+            Choose one <code>command</code> and one <code>direction</code> for each player.<br />
+            Direction options: <strong>up</strong>, <strong>left</strong>, <strong>down</strong>, <strong>right</strong>
+          </p>
+          <div class="command-grid">
+            <label class="command-row" for="cmd-up-action">
+              <span>Player A (Up)</span>
+              <div class="command-selects">
+                <select id="cmd-up-action" data-player="up" aria-label="Player A command">
+                  <option value="move">move</option>
+                  <option value="shield">shield</option>
+                  <option value="shoot">shoot</option>
+                </select>
+                <select id="cmd-up-direction" data-player="up" aria-label="Player A direction">
+                  <option value="up">up</option>
+                  <option value="left">left</option>
+                  <option value="down">down</option>
+                  <option value="right">right</option>
+                </select>
+              </div>
+            </label>
+            <label class="command-row" for="cmd-left-action">
+              <span>Player B (Left)</span>
+              <div class="command-selects">
+                <select id="cmd-left-action" data-player="left" aria-label="Player B command">
+                  <option value="move">move</option>
+                  <option value="shield">shield</option>
+                  <option value="shoot">shoot</option>
+                </select>
+                <select id="cmd-left-direction" data-player="left" aria-label="Player B direction">
+                  <option value="up">up</option>
+                  <option value="left">left</option>
+                  <option value="down">down</option>
+                  <option value="right">right</option>
+                </select>
+              </div>
+            </label>
+            <label class="command-row" for="cmd-down-action">
+              <span>Player C (Down)</span>
+              <div class="command-selects">
+                <select id="cmd-down-action" data-player="down" aria-label="Player C command">
+                  <option value="move">move</option>
+                  <option value="shield">shield</option>
+                  <option value="shoot">shoot</option>
+                </select>
+                <select id="cmd-down-direction" data-player="down" aria-label="Player C direction">
+                  <option value="up">up</option>
+                  <option value="left">left</option>
+                  <option value="down">down</option>
+                  <option value="right">right</option>
+                </select>
+              </div>
+            </label>
+            <label class="command-row" for="cmd-right-action">
+              <span>Player D (Right)</span>
+              <div class="command-selects">
+                <select id="cmd-right-action" data-player="right" aria-label="Player D command">
+                  <option value="move">move</option>
+                  <option value="shield">shield</option>
+                  <option value="shoot">shoot</option>
+                </select>
+                <select id="cmd-right-direction" data-player="right" aria-label="Player D direction">
+                  <option value="up">up</option>
+                  <option value="left">left</option>
+                  <option value="down">down</option>
+                  <option value="right">right</option>
+                </select>
+              </div>
+            </label>
+          </div>
+          <button id="executeButton" type="button" class="primary">Execute Active Command</button>
+        </div>
+
+        <div class="card">
+          <h2>Match</h2>
+          <div class="button-row split">
+            <button id="startButton" type="button" class="primary">Start Match</button>
+            <button id="restartButton" type="button">Restart</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="info-grid">
+      <article class="card">
+        <h2>Players</h2>
+        <ul id="playersList" class="players-list"></ul>
+      </article>
+
+      <article class="card">
+        <h2>Log</h2>
+        <ul id="logList" class="log-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
